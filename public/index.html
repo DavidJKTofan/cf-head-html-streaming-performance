@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚔️ The Great Streaming Quest - Demo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --hero-color: #3fb950;
+            --server-color: #58a6ff;
+            --system-color: #f0883e;
+            --treasure-gold: #ffd700;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 700px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--treasure-gold), #ff9500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #8b949e;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .legend-icon { font-size: 1.5rem; }
+        
+        .explanation {
+            text-align: left;
+            line-height: 1.8;
+            color: #8b949e;
+            margin-bottom: 2rem;
+        }
+        
+        .explanation strong {
+            color: var(--text);
+        }
+        
+        .start-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--treasure-gold), #ff9500);
+            color: #000;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.5rem;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .links a {
+            color: var(--server-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+        
+        .tech-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid var(--server-color);
+            border-radius: 4px;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+        
+        .tech-note code {
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            color: var(--hero-color);
+        }
+        
+        /* Benefit Box */
+        .benefit-box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-box h3 {
+            color: #3fb950;
+            margin-bottom: 1rem;
+            font-family: 'MedievalSharp', cursive;
+        }
+        
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .benefit-card {
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid;
+        }
+        
+        .benefit-card.streaming {
+            background: rgba(63, 185, 80, 0.1);
+            border-left-color: #3fb950;
+        }
+        
+        .benefit-card.traditional {
+            background: rgba(255, 68, 68, 0.1);
+            border-left-color: #ff4444;
+        }
+        
+        .benefit-card strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-card.streaming strong { color: #3fb950; }
+        .benefit-card.traditional strong { color: #ff4444; }
+        
+        .benefit-card p {
+            color: #8b949e;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body { padding: 1rem; justify-content: flex-start; padding-top: 2rem; }
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 0.9rem; margin-bottom: 1.5rem; }
+            .card { padding: 1.25rem; }
+            .legend { grid-template-columns: 1fr; gap: 0.75rem; }
+            .legend-item { font-size: 0.8rem; }
+            .legend-icon { font-size: 1.2rem; }
+            .explanation { font-size: 0.85rem; line-height: 1.6; }
+            .start-btn { font-size: 1.2rem; padding: 0.85rem 2rem; width: 100%; }
+            .links { flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+            .links a { font-size: 0.8rem; }
+            .tech-note { font-size: 0.75rem; padding: 0.75rem; }
+            .benefit-box { padding: 1rem; }
+            .benefit-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .benefit-card { padding: 0.85rem; }
+            .benefit-card p { font-size: 0.8rem; }
+        }
+        
+        @media (max-width: 480px) {
+            body { padding: 0.75rem; padding-top: 1rem; }
+            h1 { font-size: 1.6rem; }
+            .subtitle { font-size: 0.8rem; }
+            .card { padding: 1rem; }
+            .legend-item { font-size: 0.75rem; gap: 0.5rem; }
+            .explanation { font-size: 0.8rem; }
+            .start-btn { font-size: 1rem; padding: 0.75rem 1.5rem; }
+            .benefit-box h3 { font-size: 1rem; }
+            .benefit-card p { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚔️ The Great Streaming Quest 🏰</h1>
+        <p class="subtitle">A Cloudflare Workers Demo for HTML Streaming Performance</p>
+        
+        <div class="card">
+            <div class="legend">
+                <div class="legend-item"><span class="legend-icon">🦸</span> <strong>Hero</strong> = Browser</div>
+                <div class="legend-item"><span class="legend-icon">🧙</span> <strong>Quest Giver</strong> = Server</div>
+                <div class="legend-item"><span class="legend-icon">🗺️</span> <strong>Map</strong> = &lt;head&gt; tag</div>
+                <div class="legend-item"><span class="legend-icon">🛡️</span> <strong>Heavy Armor</strong> = CSS/JS</div>
+                <div class="legend-item"><span class="legend-icon">🏔️</span> <strong>Dungeon</strong> = Database</div>
+                <div class="legend-item"><span class="legend-icon">💰</span> <strong>Treasure</strong> = &lt;body&gt; data</div>
+            </div>
+            
+            <div class="explanation">
+                <p>
+                    This demo shows how <strong>streaming the &lt;head&gt;</strong> before the &lt;body&gt; 
+                    improves page load performance. The browser can download CSS, fonts, and JS 
+                    <strong>in parallel</strong> while the server fetches data.
+                </p>
+            </div>
+            
+            <a href="/compare" class="start-btn">� Race: Streaming vs Traditional</a>
+            
+            <div class="links" style="flex-wrap: wrap;">
+                <a href="/quest">⚡ Streaming Demo</a>
+                <a href="/quest/no-stream">🐌 Traditional Demo</a>
+                <a href="/api/config">📊 Config (JSON)</a>
+            </div>
+        </div>
+        
+        <div class="benefit-box">
+            <h3>🚀 Why Stream the &lt;head&gt;?</h3>
+            <div class="benefit-grid">
+                <div class="benefit-card streaming">
+                    <strong>✅ With Streaming</strong>
+                    <p>
+                        Browser receives &lt;head&gt; <strong>instantly</strong>.<br>
+                        Downloads CSS/JS <strong>in parallel</strong> with server work.<br>
+                        <span style="color: #3fb950;">Total: ~2000ms</span>
+                    </p>
+                </div>
+                <div class="benefit-card traditional">
+                    <strong>❌ Without Streaming</strong>
+                    <p>
+                        Browser waits for <strong>entire response</strong>.<br>
+                        Downloads CSS/JS <strong>after</strong> server finishes.<br>
+                        <span style="color: #ff4444;">Total: ~2800ms</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-note">
+            <strong>How it works:</strong> The Worker uses <code>TransformStream</code> to send the &lt;head&gt; 
+            immediately via <code>ctx.waitUntil()</code>, then continues fetching data. The browser parses 
+            the &lt;head&gt; and starts downloading CSS/JS assets <strong>while the server is still working</strong>.
+        </div>
+    </div>
+</body>
+</html>
