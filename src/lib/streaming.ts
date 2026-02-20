@@ -17,7 +17,6 @@ export interface StreamingPipeline {
  * Returns a readable stream (for the Response) and a writer (for sending chunks).
  */
 export function createStreamingPipeline(): StreamingPipeline {
-	const encoder = new TextEncoder();
 	const { readable, writable } = new TransformStream<Uint8Array, Uint8Array>();
 	const rawWriter = writable.getWriter();
 

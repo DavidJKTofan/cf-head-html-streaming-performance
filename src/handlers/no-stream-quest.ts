@@ -84,6 +84,7 @@ function generateFullPageHTML(config: QuestConfig, dbTime: number): string {
     <script src="/js/quest.js"></script>
 </head>
 <body>
+    <a href="/" class="home-btn" title="Home">🏠</a>
     <div class="container">
         <h1 style="background: linear-gradient(135deg, #ff4444, #cc0000); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">❌ Traditional Approach (No Streaming)</h1>
         <p class="subtitle">The browser waited ${config.dungeonDelayMs}ms before receiving ANY HTML</p>
@@ -183,6 +184,11 @@ function generateFullPageHTML(config: QuestConfig, dbTime: number): string {
                 <a href="/quest" style="color: #3fb950;">→ Try the Streaming version</a> to see the difference!
             </p>
         </div>
+        
+        <footer class="footer">
+            For demonstration and educational purposes only. 
+            <a href="https://github.com/DavidJKTofan/cf-head-html-streaming-performance" target="_blank">View on GitHub</a>
+        </footer>
     </div>
 </body>
 </html>`;

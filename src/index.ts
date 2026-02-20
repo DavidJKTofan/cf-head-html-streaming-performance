@@ -408,9 +408,37 @@ function getComparisonHTML(): string {
             .results-row { grid-template-columns: 1fr; }
             .result-time { font-size: 1.3rem; }
         }
+        /* Home Button */
+        .home-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 44px;
+            height: 44px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #e6edf3;
+            font-size: 1.25rem;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            z-index: 1000;
+        }
+        .home-btn:hover {
+            background: #30363d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 480px) {
+            .home-btn { width: 38px; height: 38px; top: 0.5rem; left: 0.5rem; font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
+    <a href="/" class="home-btn" title="Home">🏠</a>
     <h1>⚡ Streaming vs Traditional Race</h1>
     <p class="subtitle">Watch how streaming enables parallel loading</p>
     
@@ -752,6 +780,11 @@ function getComparisonHTML(): string {
             });
         }
     </script>
+    
+    <footer style="margin-top: 1.5rem; padding: 1rem; text-align: center; font-size: 0.7rem; color: #484f58; border-top: 1px solid #30363d;">
+        For demonstration and educational purposes only. 
+        <a href="https://github.com/DavidJKTofan/cf-head-html-streaming-performance" target="_blank" style="color: #58a6ff; text-decoration: none;">View on GitHub</a>
+    </footer>
 </body>
 </html>`;
 }

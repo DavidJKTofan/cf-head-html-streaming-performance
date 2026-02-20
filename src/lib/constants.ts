@@ -11,7 +11,7 @@ export const DEFAULT_QUEST_CONFIG: QuestConfig = {
 
 export const RESPONSE_HEADERS: HeadersInit = {
 	'Content-Type': 'text/html; charset=utf-8',
-	'Transfer-Encoding': 'chunked',
+	// Note: Transfer-Encoding is automatically set by the runtime for ReadableStream responses
 	'X-Content-Type-Options': 'nosniff',
 	'Cache-Control': 'no-store', // Prevent caching so demo works every refresh
 };

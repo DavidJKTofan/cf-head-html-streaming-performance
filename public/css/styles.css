@@ -28,6 +28,36 @@
     padding: 0;
 }
 
+/* Home Button */
+.home-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.25rem;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    z-index: 1000;
+}
+
+.home-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.home-btn:active {
+    transform: translateY(0);
+}
+
 body {
     font-family: 'Fira Code', monospace;
     background: var(--bg-dark);
@@ -322,6 +352,14 @@ h1 {
 
 /* Responsive Design - Mobile */
 @media (max-width: 480px) {
+    .home-btn {
+        width: 38px;
+        height: 38px;
+        top: 0.5rem;
+        left: 0.5rem;
+        font-size: 1rem;
+    }
+    
     body {
         padding: 0.75rem;
     }
@@ -417,5 +455,32 @@ h1 {
     .stat-label {
         font-size: 0.7rem;
         text-align: right;
+    }
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #484f58;
+    border-top: 1px solid var(--border);
+}
+
+.footer a {
+    color: var(--server-color);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .footer {
+        font-size: 0.65rem;
+        padding: 0.75rem;
+        margin-top: 1.5rem;
     }
 }

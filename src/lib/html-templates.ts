@@ -65,6 +65,7 @@ export function generateHeadChunk(config: QuestConfig): string {
     </script>
 </head>
 <body>
+    <a href="/" class="home-btn" title="Home">🏠</a>
     <div class="container">
         <h1>⚔️ The Great Streaming Quest 🏰</h1>
         <p class="subtitle">Demonstrating HTML &lt;head&gt; Streaming for Faster Page Loads</p>
@@ -138,6 +139,11 @@ export function generateBodyChunk(config: QuestConfig): string {
                 logToQuest('🦸 Hero', '💰 Treasure received! Quest complete in ' + totalTime + 'ms!', 'hero');
             }
         </script>
+        
+        <footer class="footer">
+            For demonstration and educational purposes only. 
+            <a href="https://github.com/DavidJKTofan/cf-head-html-streaming-performance" target="_blank">View on GitHub</a>
+        </footer>
     </div>
 </body>
 </html>
